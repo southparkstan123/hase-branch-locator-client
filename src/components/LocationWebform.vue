@@ -212,6 +212,7 @@ export default {
     }
   },
   mounted() {
+    console.log("Welcome");
     this.toggleCurrenciesDropdown();
     this.toggleSubDistrictsDropdown();
   },
