@@ -212,6 +212,7 @@ export default {
     }
   },
   mounted() {
+    console.log(process.env);
     this.toggleCurrenciesDropdown();
     this.toggleSubDistrictsDropdown();
   },
