@@ -1,28 +1,30 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app" class="container">
+    <Alert/>
+    <LanguageSwitcher/>
+    <ServiceDetailModal/>
+    <ATMTypeModal/>
+    <router-view/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Alert from './components/Alert.vue'
+import ServiceDetailModal from './components/ServiceDetailModal.vue'
+import ATMTypeModal from './components/ATMTypeModal.vue'
+import LanguageSwitcher from './components/LanguageSwitcher.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    Alert,
+    ServiceDetailModal,
+    LanguageSwitcher,
+    ATMTypeModal
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
