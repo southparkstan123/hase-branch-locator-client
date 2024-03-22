@@ -71,8 +71,15 @@ yarn run serve
 or
 
 ```bash
+# For production mode with hot module reload
+yarn run serve-hot
+```
+
+or
+
+```bash
 # For production mode
-yarn run build && yarn run preview --port 8000
+yarn run build
 ```
 
 4. Open http://localhost:8080 in web browser
