@@ -14,6 +14,7 @@ export default {
         changeLanguage(val){
             const path = '/'
             this.$store.dispatch('siteConfig/setLanguage', val, { root: true })
+            this.$store.dispatch('branchLocation/resetItems', { root: true })
             const query = {'lang': this.currentLanguage.value };
             this.$router.replace({path, query})
         }
