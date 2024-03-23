@@ -4,10 +4,9 @@
             <article class="my-3">
                 <p v-html="message.message"></p>
             </article>
-            <b-container fluid="sm">
+            <b-container>
                 <b-list-group class="w-75 p-3 mx-auto">
                    <location-item 
-                        ref="locationItems" 
                         v-bind:key="index" 
                         v-for="(item, index) in items" :item="item"
                     /> 
