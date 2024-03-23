@@ -5,7 +5,7 @@
                 <p v-html="message.message"></p>
             </article>
             <b-container>
-                <b-list-group class="w-75 p-3 mx-auto">
+                <b-list-group class="w-100 mx-auto">
                    <location-item 
                         v-bind:key="index" 
                         v-for="(item, index) in items" :item="item"

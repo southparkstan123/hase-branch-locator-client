@@ -2,7 +2,7 @@
   <b-list-group-item>
     <b-row>
       <b-col lg="5">
-        <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex justify-content-center align-items-center">
           <l-map style="width: 320px; height: 240px" :zoom="17" :center="location">
             <l-tile-layer :url="'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'"
               :attribution="attribution"></l-tile-layer>
