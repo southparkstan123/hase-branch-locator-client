@@ -4,20 +4,15 @@
             <article class="my-3">
                 <p v-html="message.message"></p>
             </article>
-            <Carousel 
-                :responsive="{
-                    0: { items: 1, nav: false, dots: true },
-                    768: { items: 2, nav: false, dots: true },
-                    992: { items: 3, nav: false, dots: true }
-                }"
-
-            >
-                <LocationItem 
-                    ref="locationItems" 
-                    v-bind:key="index" 
-                    v-for="(item, index) in items" :item="item"
-                />
-            </Carousel>
+            <b-container fluid="sm">
+                <b-list-group class="w-75 p-3 mx-auto">
+                   <location-item 
+                        ref="locationItems" 
+                        v-bind:key="index" 
+                        v-for="(item, index) in items" :item="item"
+                    /> 
+                </b-list-group>
+            </b-container>
             <b-button pill variant="success" @click="resetItems">{{ $t("branchLocator.confirmSubmit.modify") }}</b-button>
         </div>
         <div class="text-center" v-else-if="isLoading === true">
@@ -29,18 +24,16 @@
 <script>
 import _ from 'lodash'
 import { mapGetters } from 'vuex'
-import LocationItem from './LocationItem'
-import Carousel from 'vue-owl-carousel'
+import NewLocationItem from './NewLocationItem'
 import { setTimeout } from 'timers';
 import left from "../assets/Arrow-Left-icon.png";
 import right from "../assets/Arrow-Right-icon.png";
 
 export default {
     components: {
-        LocationItem,
-        Carousel
+        'location-item': NewLocationItem,
     },
-    data(){
+    data() {
         return {
             heightOfCarousel: `fit-content`,
             left: left,
@@ -55,18 +48,18 @@ export default {
         })
     },
     methods: {
-        resetItems(){
+        resetItems() {
             this.$store.dispatch('branchLocation/resetItems', { root: true });
         },
-        getMaxHeightInItems(){
+        getMaxHeightInItems() {
             setTimeout(() => {
-                this.$nextTick(()=>{
-                    if(document.getElementsByClassName('location-content')){
+                this.$nextTick(() => {
+                    if (document.getElementsByClassName('location-content')) {
                         let maxHeight = 0;
 
                         _.forEach(document.getElementsByClassName('location-content'), (element) => {
                             element.style.minHeight = `fit-content`;
-                            if(element.clientHeight > maxHeight){
+                            if (element.clientHeight > maxHeight) {
                                 maxHeight = element.clientHeight
                             }
                         });
@@ -80,18 +73,18 @@ export default {
             }, 1000)
         }
     },
-    updated(){
-        this.getMaxHeightInItems() 
+    updated() {
+        this.getMaxHeightInItems()
         window.onresize = () => {
-            this.getMaxHeightInItems() 
+            this.getMaxHeightInItems()
         }
     }
 }
 </script>
 
 <style>
-    .arrow{
-        width:100px;
-        height:20vh;
-    }
+.arrow {
+    width: 100px;
+    height: 20vh;
+}
 </style>

@@ -10,7 +10,8 @@ const state = {
   siteServiceHourWeekdays: '',
   siteServiceHourSat: '',
   siteServiceHourSun: '',
-  siteFXATMServices: ''
+  siteFXATMServices: '',
+  siteLocation: [0, 0]
 }
 
 const getters = {
@@ -46,6 +47,7 @@ const mutations = {
     state.siteServiceHourSat = payload.siteServiceHourSat
     state.siteServiceHourSun = payload.siteServiceHourSun
     state.siteFXATMServices = payload.siteFXATMServices
+    state.siteLocation = payload.siteLocation
   },
   closeServiceDetailsModal (state) {
     state.showServiceDetailsModal = false
@@ -59,6 +61,7 @@ const mutations = {
     state.siteServiceHourSat = ''
     state.siteServiceHourSun = ''
     state.siteFXATMServices = ''
+    state.siteLocation =[0, 0]
   }
 }
 
