@@ -8,17 +8,17 @@ The repository of backend (API) is [here](https://github.com/southparkstan123/ha
 
 ## Technical information
 
-#### Javascript Framework
+### Javascript Framework
 
 **Vue 2.6.10** and **Node 16** used on this repo
 
-#### CSS Framework
+### CSS Framework
 
 **Bootstrap 4.3.1** is used on this repo
 
-#### Others
+### Others
 
-**BootstrapVue 2.0.0** and **Vuex 4** are used on this repo
+**BootstrapVue 2.0.0** and **Vuex 3.1.1** are used on this repo
 
 ## Project setup
 ```
