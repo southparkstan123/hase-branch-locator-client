@@ -1,5 +1,6 @@
 <template>
     <div>
+        
         <div v-if="items && items.length > 0 && isLoading === false">
             <article class="my-3">
                 <p v-html="message.message"></p>
@@ -12,8 +13,11 @@
                     /> 
                 </b-list-group>
             </b-container>
-            <b-button pill variant="success" @click="resetItems">{{ $t("branchLocator.confirmSubmit.modify") }}</b-button>
+            <div class="fixed-bottom m-3">
+                <b-button pill variant="success" @click="resetItems">{{ $t("branchLocator.confirmSubmit.modify") }}</b-button>     
+            </div>
         </div>
+        
         <div class="text-center" v-else-if="isLoading === true">
             <b-spinner class="m-5" variant="success" label="Spinning"></b-spinner>
         </div>
