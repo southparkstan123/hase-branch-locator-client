@@ -10,7 +10,19 @@
         scrollable
     >
         <template slot="modal-header">
-            <h4>{{ this.$i18n.t('branchLocator.typeModal.header') }} <font-awesome-icon id="print" icon="print" @click="toPrinter"/></h4>
+            <h4>{{ this.$i18n.t('branchLocator.typeModal.header') }}
+            <b-button 
+                variant="link" 
+                class="p-0" 
+                size="lg" 
+                v-b-tooltip.hover="{ 
+                title: $t('branchLocator.typeModal.print'), 
+                placement: 'right'
+                }"
+            >
+                <font-awesome-icon id="print" icon="print" @click="toPrinter"/>
+            </b-button>
+            </h4>
             <font-awesome-icon class="close-button" icon="times" @click="close"/>
         </template>
         <template slot="default">

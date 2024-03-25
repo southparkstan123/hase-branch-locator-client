@@ -7,6 +7,7 @@ export default {
             "submit": "Submit",
             "displayHead": "Branch and Automated Banking Centres Addresses",
             "output": "Please input the form: ",
+            "hints": "Hints",
             "areas": "Area: ",
             "areasOptions": "[{\"text\":\"Hong Kong Island\",\"value\":\"Hong Kong Island\"},{\"text\":\"Kowloon West\",\"value\":\"Kowloon West\"},{\"text\":\"Kowloon East\",\"value\":\"Kowloon East\"},{\"text\":\"New Territories West\",\"value\":\"New Territories West\"},{\"text\":\"New Territories East\",\"value\":\"New Territories East\"}]",
             "districts": "District: ",
@@ -77,7 +78,8 @@ export default {
             "content": "The Foreign Currency Withdrawal Function supports up to 12 currencies notes. Some service sites only provide a total of 8 currencies notes withdrawal services.",
             "currencies": "Currencies",
             "8notes": "8 Currencies Notes",
-            "12notes": "12 Currencies Notes"
+            "12notes": "12 Currencies Notes",
+            "print": "Print"
         }
     }
 }

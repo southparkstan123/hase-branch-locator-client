@@ -1,6 +1,19 @@
 <template>
   <div>
-    <h4>{{ $t("branchLocator.webform.output") }} <font-awesome-icon class="info" icon="info-circle" @click="openATMTypeModal"/></h4> 
+    <h4>
+      {{ $t("branchLocator.webform.output") }} 
+      <b-button 
+        variant="link" 
+        class="p-0" 
+        size="lg" 
+        v-b-tooltip.hover="{ 
+          title: $t('branchLocator.webform.hints'), 
+          placement: 'right'
+        }"
+      >
+        <font-awesome-icon class="info" icon="info-circle" @click="openATMTypeModal"/>
+      </b-button>
+    </h4> 
     <b-form @submit="onSubmit">
       <b-form-group>
         <label class="mr-sm-2" for="inline-form-custom-select-pref">{{ $t("branchLocator.webform.serviceTypes") }}</label>
@@ -239,6 +252,5 @@ span.error {
 }
 .info{
   color: #33A343;
-  cursor: pointer;
 }
 </style>

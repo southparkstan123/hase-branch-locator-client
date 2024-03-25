@@ -7,6 +7,7 @@ export default {
             "submit": "提交",
             "displayHead": "分行及自助理財中心地址",
             "output": "請填寫以下表格：",
+            "hints": "提示",
             "areas": "區域：",
             "areasOptions": "[{\"text\":\"香港島\",\"value\":\"Hong Kong Island\"},{\"text\":\"九龍西\",\"value\":\"Kowloon West\"},{\"text\":\"九龍東\",\"value\":\"Kowloon East\"},{\"text\":\"新界西\",\"value\":\"New Territories West\"},{\"text\":\"新界東\",\"value\":\"New Territories East\"}]",
             "districts": "地區：",
@@ -77,7 +78,8 @@ export default {
             "content": "恒生外幣提款機的外幣提取服務多達12種外幣。部分服務地點只提供8種外幣的現鈔提款服務。",
             "currencies": "貨幣",
             "8notes": "8種外幣",
-            "12notes": "12種外幣"
+            "12notes": "12種外幣",
+            "print": "列印"
         }
     }
 }
