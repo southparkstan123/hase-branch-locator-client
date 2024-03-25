@@ -1,105 +1,63 @@
 <template>
   <div>
     <h4>
-      {{ $t("branchLocator.webform.output") }} 
-      <b-button 
-        variant="link" 
-        class="p-0" 
-        size="lg" 
-        v-b-tooltip.hover="{ 
-          title: $t('branchLocator.webform.hints'), 
-          placement: 'right'
-        }"
-      >
-        <font-awesome-icon class="info" icon="info-circle" @click="openATMTypeModal"/>
+      {{ $t("branchLocator.webform.output") }}
+      <b-button variant="link" class="p-0" size="lg" v-b-tooltip.hover="{
+        title: $t('branchLocator.webform.hints'),
+        placement: 'right'
+      }">
+        <font-awesome-icon class="info" icon="info-circle" @click="openATMTypeModal" />
       </b-button>
-    </h4> 
+    </h4>
     <b-form @submit="onSubmit">
       <b-form-group>
-        <label class="mr-sm-2" for="inline-form-custom-select-pref">{{ $t("branchLocator.webform.serviceTypes") }}</label>
-        <multiselect
-          v-model="form.serviceType"
-          track-by="value"
-          label="text"
-          :options="JSON.parse(this.$i18n.t('branchLocator.webform.serviceTypesOptions'))"
-          :searchable="false"
-          :placeholder="this.$i18n.t('branchLocator.webform.pleaseSelect')"
-          :allow-empty="false"
-          @input="toggleCurrenciesDropdown"
-          selectLabel=""
-          deselect-label=""
-        ></multiselect>
+        <label class="mr-sm-2" for="inline-form-custom-select-pref">{{ $t("branchLocator.webform.serviceTypes")
+          }}</label>
+        <multiselect v-model="form.serviceType" track-by="value" label="text"
+          :options="JSON.parse(this.$i18n.t('branchLocator.webform.serviceTypesOptions'))" :searchable="false"
+          :placeholder="this.$i18n.t('branchLocator.webform.pleaseSelect')" :allow-empty="false"
+          @input="toggleCurrenciesDropdown" selectLabel="" deselect-label=""></multiselect>
       </b-form-group>
       <b-form-group v-if="showCurrenciesDropdown">
         <label class="mr-sm-2" for="inline-form-custom-select-pref">{{ $t("branchLocator.webform.currencies") }}</label>
-        <multiselect
-          v-model="form.currencies"
-          :multiple="true"
-          :options="[{
-            group: this.$i18n.t('branchLocator.forexMultiSelect.currenciesSelectedAll'),
-            selections: JSON.parse(this.$i18n.t('branchLocator.webform.currenciesOptions'))
-          }]"
-          :placeholder="this.$i18n.t('branchLocator.forexMultiSelect.pleaseSelect')"
-          label="text"
-          track-by="value"
-          :close-on-select="false"
-          :clear-on-select="false"
-          :preserve-search="true"
-          :custom-label="customLabel"
-          group-values="selections" 
-          group-label="group" 
-          :group-select="true"
-          :taggable="false"
-          :showNoResults="true"
-          :selectedLabel="this.$i18n.t('branchLocator.forexMultiSelect.currenciesSelected')"
-          selectGroupLabel=""
-          selectLabel=""
-          deselectLabel=""
-          deselectGroupLabel=""
-        >
-          <template 
-            slot="selection" 
-            slot-scope="{ values, search, option, isOpen }"
-          >
-            <span class="multiselect__single" v-if="values.length >= 3 && values.length < 13 &amp;&amp; !isOpen">{{ $t("branchLocator.forexMultiSelect.currenciesCustom") }}</span>
-            <span class="multiselect__single" v-else-if="values.length === 13 &amp;&amp; !isOpen">{{ $t("branchLocator.forexMultiSelect.currenciesSelectedAll") }}</span>
-            <span slot="options" v-else-if="values.length > 0 && values.length < 3 &amp;&amp; !isOpen"> {{ values | selectedCurrenciesOptions }}</span>
+        <multiselect v-model="form.currencies" :multiple="true" :options="[{
+        group: this.$i18n.t('branchLocator.forexMultiSelect.currenciesSelectedAll'),
+        selections: JSON.parse(this.$i18n.t('branchLocator.webform.currenciesOptions'))
+      }]" :placeholder="this.$i18n.t('branchLocator.forexMultiSelect.pleaseSelect')" label="text" track-by="value"
+          :close-on-select="false" :clear-on-select="false" :preserve-search="true" :custom-label="customLabel"
+          group-values="selections" group-label="group" :group-select="true" :taggable="false" :showNoResults="true"
+          :selectedLabel="this.$i18n.t('branchLocator.forexMultiSelect.currenciesSelected')" selectGroupLabel=""
+          selectLabel="" deselectLabel="" deselectGroupLabel="">
+          <template slot="selection" slot-scope="{ values, search, option, isOpen }">
+            <span class="multiselect__single" v-if="values.length >= 3 && values.length < 13 &amp;&amp; !isOpen">{{
+        $t("branchLocator.forexMultiSelect.currenciesCustom") }}</span>
+            <span class="multiselect__single" v-else-if="values.length === 13 &amp;&amp; !isOpen">{{
+        $t("branchLocator.forexMultiSelect.currenciesSelectedAll") }}</span>
+            <span slot="options" v-else-if="values.length > 0 && values.length < 3 &amp;&amp; !isOpen"> {{ values |
+        selectedCurrenciesOptions }}</span>
             <span slot="noResult"></span>
           </template>
-          
+
         </multiselect>
       </b-form-group>
       <b-form-group>
         <label class="mr-sm-2" for="inline-form-custom-select-pref">{{ $t("branchLocator.webform.areas") }}</label>
-        <multiselect
-          v-model="form.areas"
-          track-by="value"
-          label="text"
-          :options="JSON.parse(this.$i18n.t('branchLocator.webform.areasOptions'))"
-          :searchable="false"
-          :allow-empty="false"
-          @input="toggleSubDistrictsDropdown"
-          :placeholder="this.$i18n.t('branchLocator.webform.pleaseSelect')"
-          selectLabel=""
-          deselect-label=""
-        ></multiselect>
+        <multiselect v-model="form.areas" track-by="value" label="text"
+          :options="JSON.parse(this.$i18n.t('branchLocator.webform.areasOptions'))" :searchable="false"
+          :allow-empty="false" @input="toggleSubDistrictsDropdown"
+          :placeholder="this.$i18n.t('branchLocator.webform.pleaseSelect')" selectLabel="" deselect-label="">
+        </multiselect>
       </b-form-group>
       <b-form-group v-if="showSubDistrictsDropdown">
         <label class="mr-sm-2" for="inline-form-custom-select-pref">{{ $t("branchLocator.webform.districts") }}</label>
-        <multiselect
-          v-model="form.districts"
-          track-by="value"
-          label="text"
-          :options="selectedDistricts"
-          :searchable="false"
-          :allow-empty="false"
-          :placeholder="this.$i18n.t('branchLocator.webform.pleaseSelect')"
-          selectLabel=""
-          deselect-label=""
-        ></multiselect>
+        <multiselect v-model="form.districts" track-by="value" label="text" :options="selectedDistricts"
+          :searchable="false" :allow-empty="false" :placeholder="this.$i18n.t('branchLocator.webform.pleaseSelect')"
+          selectLabel="" deselect-label=""></multiselect>
       </b-form-group>
-      <b-button class="mx-1" variant="secondary" :disabled="isLoading" type="button" @click="onReset">{{ this.$i18n.t('branchLocator.webform.cancel') }}</b-button>
-      <b-button class="mx-1" variant="success" :disabled="isLoading" type="submit">{{ this.$i18n.t('branchLocator.webform.submit') }}</b-button>
+      <b-button class="mx-1" variant="secondary" :disabled="isLoading" type="button" @click="onReset">{{
+        this.$i18n.t('branchLocator.webform.cancel') }}</b-button>
+      <b-button class="mx-1" variant="success" :disabled="isLoading" type="submit">{{
+        this.$i18n.t('branchLocator.webform.submit') }}</b-button>
     </b-form>
   </div>
 </template>
@@ -142,7 +100,7 @@ export default {
       const { serviceType, areas, currencies, districts } = this.form;
 
       const isFormValidated = () => {
-        if(serviceType.value === "FOREX") { 
+        if (serviceType.value === "FOREX") {
           return !_.isEmpty(serviceType) && !_.isEmpty(areas) && !_.isEmpty(districts) && currencies.length > 0;
         } else {
           return !_.isEmpty(serviceType) && !_.isEmpty(areas) && !_.isEmpty(districts);
@@ -150,8 +108,8 @@ export default {
       }
 
       const lang = mapLanguage(this.currentLanguage.value);
-        
-      if(isFormValidated()){
+
+      if (isFormValidated()) {
         if (serviceType.value === "Branches") {
           output = {
             ATMTypes: serviceType.value,
@@ -171,16 +129,16 @@ export default {
         this.$store.dispatch('branchLocation/getBranchesOrATMLocationByDistrict', output, { root: true });
       } else {
         let errorObject = [];
-        if(_.isEmpty(serviceType)) {
+        if (_.isEmpty(serviceType)) {
           errorObject.push(this.$i18n.t('branchLocator.webform.serviceTypesEmpty'))
         }
-        if(serviceType.value === "FOREX" && currencies.length === 0) {
+        if (serviceType.value === "FOREX" && currencies.length === 0) {
           errorObject.push(this.$i18n.t('branchLocator.webform.currenciesEmpty'))
         }
-        if(_.isEmpty(areas)) {
+        if (_.isEmpty(areas)) {
           errorObject.push(this.$i18n.t('branchLocator.webform.areasEmpty'))
         }
-        this.$store.dispatch('message/setMessage',{ type: 'error', message: errorObject.join("<br>")} , { root: true });
+        this.$store.dispatch('message/setMessage', { type: 'error', message: errorObject.join("<br>") }, { root: true });
       }
     },
     toggleCurrenciesDropdown() {
@@ -208,8 +166,8 @@ export default {
     customLabel(obj) {
       return (obj.value === 'all') ? obj.text : ((this.$i18n.lang === 'en-US') ? `${obj.text}(${obj.value})` : `${obj.text}（${obj.value}）`);
     },
-    openATMTypeModal(){
-      this.$store.dispatch('ATMTypeModal/open', JSON.parse(this.$i18n.t('branchLocator.webform.currenciesOptions')) , { root: true })
+    openATMTypeModal() {
+      this.$store.dispatch('ATMTypeModal/open', JSON.parse(this.$i18n.t('branchLocator.webform.currenciesOptions')), { root: true })
     }
   },
   computed: {
@@ -229,7 +187,7 @@ export default {
     this.toggleSubDistrictsDropdown();
   },
   filters: {
-    selectedCurrenciesOptions(currencies, lang){
+    selectedCurrenciesOptions(currencies, lang) {
       return _.chain(currencies)
         .map(obj => (lang === 'en-US') ? obj.value : obj.text)
         .join((lang === 'en-US') ? ', ' : '、')
@@ -238,7 +196,7 @@ export default {
   },
   watch: {
     currentLanguage(newLang, oldLang) {
-      if(oldLang.value !== newLang.value){
+      if (oldLang.value !== newLang.value) {
         this.onReset()
       }
     }
@@ -250,7 +208,8 @@ export default {
 span.error {
   color: red;
 }
-.info{
+
+.info {
   color: #33A343;
 }
 </style>
