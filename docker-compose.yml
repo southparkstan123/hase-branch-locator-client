@@ -1,0 +1,14 @@
+version: "3.4"
+services:
+ client:
+   image: node:16-alpine
+   container_name: client
+   entrypoint: /bin/sh
+   ports:
+     - 8080:8080
+   working_dir: /hase-branch-locator-client
+   volumes:
+     - type: bind
+       source: ./
+       target: /hase-branch-locator-client
+   tty: true

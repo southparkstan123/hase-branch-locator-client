@@ -18,14 +18,14 @@ let router = new Router({
 })
 
 router.beforeEach((to, from, next) => {
-    let language = to.query.lang;
-    if (!language) {
-        language = 'en-US';
-    }
-    i18n.locale = language
-    i18n.t
-    store.dispatch('siteConfig/setLanguage', language)
-    next();
+  let language = to.query.lang;
+  if (!language) {
+    language = 'en-US';
+  }
+  i18n.locale = language
+  i18n.t
+  store.dispatch('siteConfig/setLanguage', language)
+  next();
 })
 
 export default router

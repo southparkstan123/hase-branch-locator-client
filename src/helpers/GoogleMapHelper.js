@@ -1,6 +1,6 @@
 export const generateStaticMapLink = (lat, lng, API_endpoint , API_key, width = "300", height = "200", zoom = "18", format = "png") => {
-    const center = lat.toString() + "," + lng.toString();
-    return `${API_endpoint}?center=${center}&zoom=${zoom}&format=${format}&visual_refresh=true&maptype=roadmap&markers=color:blue&size=${width}x${height}&key=${API_key}&markers=size:mid%7Ccolor:0xff0000%7Clabel:%7C${center}`;
+  const center = lat.toString() + "," + lng.toString();
+  return `${API_endpoint}?center=${center}&zoom=${zoom}&format=${format}&visual_refresh=true&maptype=roadmap&markers=color:blue&size=${width}x${height}&key=${API_key}&markers=size:mid%7Ccolor:0xff0000%7Clabel:%7C${center}`;
 }
 
 // Load google or gaode map

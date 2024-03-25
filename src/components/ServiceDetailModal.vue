@@ -1,7 +1,8 @@
 <template>
-    <b-modal no-close-on-esc no-close-on-backdrop hide-header-close hide-header hide-footer centered :visible="modalObj.showServiceDetailsModal === true" id="service-details-modal">
+    <b-modal no-close-on-esc no-close-on-backdrop hide-header-close hide-header hide-footer centered
+        :visible="modalObj.showServiceDetailsModal === true" id="service-details-modal">
         <div class="d-block float-right">
-            <font-awesome-icon class="close-button" icon="times" @click="close"/>
+            <font-awesome-icon class="close-button" icon="times" @click="close" />
         </div>
         <div class="d-block float-left">
             <h4 class="title">{{ modalObj.siteName }}</h4>
@@ -57,35 +58,37 @@ import { mapGetters } from 'vuex'
 import { generateHtmlForContent } from "../helpers/HTMLHelper"
 
 export default {
-    props:["text"],
-    computed: mapGetters({
-        modalObj: 'serviceDetailsModal/getModalObj',
-        isServiceHourWeekdaysEmpty: 'serviceDetailsModal/isServiceHourWeekdaysEmpty',
-        isServiceHourSatEmpty: 'serviceDetailsModal/isServiceHourSatEmpty',
-        isServiceHourSunEmpty: 'serviceDetailsModal/isServiceHourSunEmpty',
-        isFxAtmServicesEmpty: 'serviceDetailsModal/isFxAtmServicesEmpty',
-        isSiteServiceHourRemarkEmpty: 'serviceDetailsModal/isSiteServiceHourRemarkEmpty',
-        isSiteAMBServiceHourEmpty: 'serviceDetailsModal/isSiteAMBServiceHourEmpty'
-    }),
-    methods: {
-        toHtml(val){
-            return generateHtmlForContent(val);
-        },
-        close(){
-            this.$store.dispatch('serviceDetailsModal/close', {root: true})
-        }
+  props: ["text"],
+  computed: mapGetters({
+    modalObj: 'serviceDetailsModal/getModalObj',
+    isServiceHourWeekdaysEmpty: 'serviceDetailsModal/isServiceHourWeekdaysEmpty',
+    isServiceHourSatEmpty: 'serviceDetailsModal/isServiceHourSatEmpty',
+    isServiceHourSunEmpty: 'serviceDetailsModal/isServiceHourSunEmpty',
+    isFxAtmServicesEmpty: 'serviceDetailsModal/isFxAtmServicesEmpty',
+    isSiteServiceHourRemarkEmpty: 'serviceDetailsModal/isSiteServiceHourRemarkEmpty',
+    isSiteAMBServiceHourEmpty: 'serviceDetailsModal/isSiteAMBServiceHourEmpty'
+  }),
+  methods: {
+    toHtml(val) {
+      return generateHtmlForContent(val);
+    },
+    close() {
+      this.$store.dispatch('serviceDetailsModal/close', { root: true })
     }
+  }
 }
 </script>
 
 <style>
-    .service-hours-content {
-        display: flex;
-    }
-    .title {
-        color: #33A343
-    }
-    .close-button {
-        cursor: pointer;
-    }
+.service-hours-content {
+    display: flex;
+}
+
+.title {
+    color: #33A343
+}
+
+.close-button {
+    cursor: pointer;
+}
 </style>
