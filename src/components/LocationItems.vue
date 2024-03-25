@@ -10,7 +10,9 @@
         </b-list-group>
       </b-container>
       <div class="fixed-bottom m-3">
-        <b-button pill variant="success" @click="resetItems">{{ $t("branchLocator.confirmSubmit.modify") }}</b-button>
+        <div class="float-right">
+          <b-button pill variant="success" @click="resetItems">{{ $t("branchLocator.confirmSubmit.modify") }}</b-button>
+        </div>
       </div>
     </div>
 
