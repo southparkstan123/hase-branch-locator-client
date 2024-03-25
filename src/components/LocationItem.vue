@@ -28,36 +28,36 @@ import { generateStaticMapLink } from "../helpers/GoogleMapHelper"
 import { googleMapAPIEndpoint, googleMapAPIKey } from '../config';
 
 export default {
-    data(){
-        return {
-            staticMapLink: ''
-        }
-    },
-    props: ["item", "heightOfCarousel"],
-    methods: {
-        toHtml(val){
-            return generateHtmlForContent(val);
-        },
-        openServiceDetailsModal(){
-            const payload = {
-                siteAddress: this.item.siteAddress,
-                siteName: this.item.siteName,
-                siteAMBServiceHour: this.item.siteAMBServiceHour,
-                siteServiceHourRemark: this.item.siteServiceHourRemark,
-                siteServiceHourWeekdays: this.item.siteServiceHourWeekdays,
-                siteServiceHourSat: this.item.siteServiceHourSat,
-                siteServiceHourSun: this.item.siteServiceHourSun,
-                siteFXATMServices: this.item.siteFXATMServices
-            }
-            this.$store.dispatch('serviceDetailsModal/open', payload, { root: true })
-        },
-        toGoogleMapPage(){
-            window.open('https://www.google.com/maps/search/?api=1&query=' + this.item.lat + ',' + this.item.lng, '_blank')
-        }
-    },
-    mounted(){
-        this.staticMapLink = generateStaticMapLink(this.item.lat, this.item.lng, googleMapAPIEndpoint, googleMapAPIKey)
+  data(){
+    return {
+      staticMapLink: ''
     }
+  },
+  props: ["item", "heightOfCarousel"],
+  methods: {
+    toHtml(val){
+      return generateHtmlForContent(val);
+    },
+    openServiceDetailsModal(){
+      const payload = {
+        siteAddress: this.item.siteAddress,
+        siteName: this.item.siteName,
+        siteAMBServiceHour: this.item.siteAMBServiceHour,
+        siteServiceHourRemark: this.item.siteServiceHourRemark,
+        siteServiceHourWeekdays: this.item.siteServiceHourWeekdays,
+        siteServiceHourSat: this.item.siteServiceHourSat,
+        siteServiceHourSun: this.item.siteServiceHourSun,
+        siteFXATMServices: this.item.siteFXATMServices
+      }
+      this.$store.dispatch('serviceDetailsModal/open', payload, { root: true })
+    },
+    toGoogleMapPage(){
+      window.open('https://www.google.com/maps/search/?api=1&query=' + this.item.lat + ',' + this.item.lng, '_blank')
+    }
+  },
+  mounted(){
+    this.staticMapLink = generateStaticMapLink(this.item.lat, this.item.lng, googleMapAPIEndpoint, googleMapAPIKey)
+  }
 }
 </script>
 

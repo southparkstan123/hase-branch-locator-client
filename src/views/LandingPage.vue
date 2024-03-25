@@ -18,7 +18,7 @@ export default {
   },
   computed:{
     ...mapGetters({
-        items: 'branchLocation/getLocationItems'
+      items: 'branchLocation/getLocationItems'
     })
   }
 }

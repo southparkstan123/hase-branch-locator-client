@@ -32,55 +32,55 @@ import left from "../assets/Arrow-Left-icon.png";
 import right from "../assets/Arrow-Right-icon.png";
 
 export default {
-    components: {
-        'location-item': NewLocationItem,
-    },
-    data() {
-        return {
-            heightOfCarousel: `fit-content`,
-            left: left,
-            right: right
-        }
-    },
-    computed: {
-        ...mapGetters({
-            items: 'branchLocation/getLocationItems',
-            isLoading: 'branchLocation/getLoadingState',
-            message: 'branchLocation/getMessage'
-        })
-    },
-    methods: {
-        resetItems() {
-            this.$store.dispatch('branchLocation/resetItems', { root: true });
-        },
-        getMaxHeightInItems() {
-            setTimeout(() => {
-                this.$nextTick(() => {
-                    if (document.getElementsByClassName('location-content')) {
-                        let maxHeight = 0;
-
-                        _.forEach(document.getElementsByClassName('location-content'), (element) => {
-                            element.style.minHeight = `fit-content`;
-                            if (element.clientHeight > maxHeight) {
-                                maxHeight = element.clientHeight
-                            }
-                        });
-
-                        _.forEach(document.getElementsByClassName('location-content'), (element) => {
-                            element.style.minHeight = `fit-content`;
-                            element.style.minHeight = `${maxHeight}px`;
-                        });
-                    }
-                });
-            }, 1000)
-        }
-    },
-    updated() {
-        this.getMaxHeightInItems()
-        window.onresize = () => {
-            this.getMaxHeightInItems()
-        }
+  components: {
+    'location-item': NewLocationItem,
+  },
+  data() {
+    return {
+      heightOfCarousel: `fit-content`,
+      left: left,
+      right: right
     }
+  },
+  computed: {
+    ...mapGetters({
+      items: 'branchLocation/getLocationItems',
+      isLoading: 'branchLocation/getLoadingState',
+      message: 'branchLocation/getMessage'
+    })
+  },
+  methods: {
+    resetItems() {
+      this.$store.dispatch('branchLocation/resetItems', { root: true });
+    },
+    getMaxHeightInItems() {
+      setTimeout(() => {
+        this.$nextTick(() => {
+          if (document.getElementsByClassName('location-content')) {
+            let maxHeight = 0;
+
+            _.forEach(document.getElementsByClassName('location-content'), (element) => {
+              element.style.minHeight = `fit-content`;
+              if (element.clientHeight > maxHeight) {
+                maxHeight = element.clientHeight
+              }
+            });
+
+            _.forEach(document.getElementsByClassName('location-content'), (element) => {
+              element.style.minHeight = `fit-content`;
+              element.style.minHeight = `${maxHeight}px`;
+            });
+          }
+        });
+      }, 1000)
+    }
+  },
+  updated() {
+    this.getMaxHeightInItems()
+    window.onresize = () => {
+      this.getMaxHeightInItems()
+    }
+  }
 }
 </script>
 

@@ -138,50 +138,50 @@ export default {
     },
     onSubmit(e) {
       e.preventDefault();
-        let output = {};
-        const { serviceType, areas, currencies, districts } = this.form;
+      let output = {};
+      const { serviceType, areas, currencies, districts } = this.form;
 
-        const isFormValidated = () => {
-          if(serviceType.value === "FOREX") { 
-            return !_.isEmpty(serviceType) && !_.isEmpty(areas) && !_.isEmpty(districts) && currencies.length > 0;
-          } else {
-            return !_.isEmpty(serviceType) && !_.isEmpty(areas) && !_.isEmpty(districts);
-          }
-        }
-
-        const lang = mapLanguage(this.currentLanguage.value);
-        
-        if(isFormValidated()){
-          if (serviceType.value === "Branches") {
-            output = {
-              ATMTypes: serviceType.value,
-              areas: areas.value,
-              districts: districts.value,
-              lang
-            };
-          } else {
-            output = {
-              ATMTypes: serviceType.value,
-              currencies: currencies.map(currency => currency.value),
-              areas: areas.value,
-              districts: districts.value,
-              lang
-            };
-          }
-          this.$store.dispatch('branchLocation/getBranchesOrATMLocationByDistrict', output, { root: true });
+      const isFormValidated = () => {
+        if(serviceType.value === "FOREX") { 
+          return !_.isEmpty(serviceType) && !_.isEmpty(areas) && !_.isEmpty(districts) && currencies.length > 0;
         } else {
-          let errorObject = [];
-          if(_.isEmpty(serviceType)) {
-            errorObject.push(this.$i18n.t('branchLocator.webform.serviceTypesEmpty'))
-          }
-          if(serviceType.value === "FOREX" && currencies.length === 0) {
-            errorObject.push(this.$i18n.t('branchLocator.webform.currenciesEmpty'))
-          }
-          if(_.isEmpty(areas)) {
-            errorObject.push(this.$i18n.t('branchLocator.webform.areasEmpty'))
-          }
-          this.$store.dispatch('message/setMessage',{ type: 'error', message: errorObject.join("<br>")} , { root: true });
+          return !_.isEmpty(serviceType) && !_.isEmpty(areas) && !_.isEmpty(districts);
         }
+      }
+
+      const lang = mapLanguage(this.currentLanguage.value);
+        
+      if(isFormValidated()){
+        if (serviceType.value === "Branches") {
+          output = {
+            ATMTypes: serviceType.value,
+            areas: areas.value,
+            districts: districts.value,
+            lang
+          };
+        } else {
+          output = {
+            ATMTypes: serviceType.value,
+            currencies: currencies.map(currency => currency.value),
+            areas: areas.value,
+            districts: districts.value,
+            lang
+          };
+        }
+        this.$store.dispatch('branchLocation/getBranchesOrATMLocationByDistrict', output, { root: true });
+      } else {
+        let errorObject = [];
+        if(_.isEmpty(serviceType)) {
+          errorObject.push(this.$i18n.t('branchLocator.webform.serviceTypesEmpty'))
+        }
+        if(serviceType.value === "FOREX" && currencies.length === 0) {
+          errorObject.push(this.$i18n.t('branchLocator.webform.currenciesEmpty'))
+        }
+        if(_.isEmpty(areas)) {
+          errorObject.push(this.$i18n.t('branchLocator.webform.areasEmpty'))
+        }
+        this.$store.dispatch('message/setMessage',{ type: 'error', message: errorObject.join("<br>")} , { root: true });
+      }
     },
     toggleCurrenciesDropdown() {
       if (this.form.serviceType.value === "FOREX") {

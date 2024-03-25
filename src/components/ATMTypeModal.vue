@@ -57,43 +57,43 @@
 import { mapGetters } from 'vuex';
 
 export default {
-    computed: {
-        ...mapGetters({
-            show: "ATMTypeModal/isShowATMTypeModal",
-            items: "ATMTypeModal/getList"
-        })
-    },
-    data() {
-      return {
-        fields: {
-            'text': {
-                label: this.$i18n.t('branchLocator.typeModal.currencies'),
-                sortable: false
-            },
-            '8notes': {
-                label: this.$i18n.t('branchLocator.typeModal.8notes'),
-                sortable: false
-            },
-            '12notes': {
-                label: this.$i18n.t('branchLocator.typeModal.12notes'),
-                sortable: false
-            }
+  computed: {
+    ...mapGetters({
+      show: "ATMTypeModal/isShowATMTypeModal",
+      items: "ATMTypeModal/getList"
+    })
+  },
+  data() {
+    return {
+      fields: {
+        'text': {
+          label: this.$i18n.t('branchLocator.typeModal.currencies'),
+          sortable: false
+        },
+        '8notes': {
+          label: this.$i18n.t('branchLocator.typeModal.8notes'),
+          sortable: false
+        },
+        '12notes': {
+          label: this.$i18n.t('branchLocator.typeModal.12notes'),
+          sortable: false
         }
       }
-    },
-    methods: {
-        close(){
-            this.$store.dispatch('ATMTypeModal/close', {root: true})
-        },
-        toPrinter(){
-            window.print();
-        }
-    },
-    filters: {
-        customLabel(obj) {
-            return  `${obj.text} - ${obj.value}`;
-        },
     }
+  },
+  methods: {
+    close(){
+      this.$store.dispatch('ATMTypeModal/close', {root: true})
+    },
+    toPrinter(){
+      window.print();
+    }
+  },
+  filters: {
+    customLabel(obj) {
+      return  `${obj.text} - ${obj.value}`;
+    },
+  }
 }
 </script>
     

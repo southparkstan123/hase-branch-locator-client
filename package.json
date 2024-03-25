@@ -6,7 +6,7 @@
     "serve": "vue-cli-service serve",
     "serve-hot": "vue-cli-service serve --watch",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "npx eslint --fix src/**/*.{js,vue}"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.12",
@@ -43,7 +43,9 @@
       "plugin:vue/essential",
       "eslint:recommended"
     ],
-    "rules": {},
+    "rules": {
+      "indent": ["error", 2]
+    },
     "parserOptions": {
       "parser": "babel-eslint"
     }
