@@ -58,24 +58,24 @@ import { mapGetters } from 'vuex'
 import { generateHtmlForContent } from "../helpers/HTMLHelper"
 
 export default {
-    props: ["text"],
-    computed: mapGetters({
-        modalObj: 'serviceDetailsModal/getModalObj',
-        isServiceHourWeekdaysEmpty: 'serviceDetailsModal/isServiceHourWeekdaysEmpty',
-        isServiceHourSatEmpty: 'serviceDetailsModal/isServiceHourSatEmpty',
-        isServiceHourSunEmpty: 'serviceDetailsModal/isServiceHourSunEmpty',
-        isFxAtmServicesEmpty: 'serviceDetailsModal/isFxAtmServicesEmpty',
-        isSiteServiceHourRemarkEmpty: 'serviceDetailsModal/isSiteServiceHourRemarkEmpty',
-        isSiteAMBServiceHourEmpty: 'serviceDetailsModal/isSiteAMBServiceHourEmpty'
-    }),
-    methods: {
-        toHtml(val) {
-            return generateHtmlForContent(val);
-        },
-        close() {
-            this.$store.dispatch('serviceDetailsModal/close', { root: true })
-        }
+  props: ["text"],
+  computed: mapGetters({
+    modalObj: 'serviceDetailsModal/getModalObj',
+    isServiceHourWeekdaysEmpty: 'serviceDetailsModal/isServiceHourWeekdaysEmpty',
+    isServiceHourSatEmpty: 'serviceDetailsModal/isServiceHourSatEmpty',
+    isServiceHourSunEmpty: 'serviceDetailsModal/isServiceHourSunEmpty',
+    isFxAtmServicesEmpty: 'serviceDetailsModal/isFxAtmServicesEmpty',
+    isSiteServiceHourRemarkEmpty: 'serviceDetailsModal/isSiteServiceHourRemarkEmpty',
+    isSiteAMBServiceHourEmpty: 'serviceDetailsModal/isSiteAMBServiceHourEmpty'
+  }),
+  methods: {
+    toHtml(val) {
+      return generateHtmlForContent(val);
+    },
+    close() {
+      this.$store.dispatch('serviceDetailsModal/close', { root: true })
     }
+  }
 }
 </script>
 

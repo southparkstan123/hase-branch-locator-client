@@ -22,12 +22,12 @@ export default {
   methods: {
     mapCodeToClass(type) {
       switch (type) {
-        case 'error':
-          return 'danger'
-        case 'warning':
-          return 'warning'
-        default:
-          return 'success'
+      case 'error':
+        return 'danger'
+      case 'warning':
+        return 'warning'
+      default:
+        return 'success'
       }
     },
     closeAlert() {
