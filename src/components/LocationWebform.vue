@@ -33,11 +33,11 @@
         $t("branchLocator.forexMultiSelect.currenciesCustom") }}</span>
             <span class="multiselect__single" v-else-if="values.length === 13 &amp;&amp; !isOpen">{{
         $t("branchLocator.forexMultiSelect.currenciesSelectedAll") }}</span>
-            <span slot="options" v-else-if="values.length > 0 && values.length < 3 &amp;&amp; !isOpen"> {{ values |
-        selectedCurrenciesOptions }}</span>
+            <span slot="options" v-else-if="values.length > 0 && values.length < 3 &amp;&amp; !isOpen">
+              {{ values.map(obj => (currentLanguage.value === 'en-US') ? obj.value :
+        obj.text).join((currentLanguage.value === 'en-US') ? ', ' : '、') }}</span>
             <span slot="noResult"></span>
           </template>
-
         </multiselect>
       </b-form-group>
       <b-form-group>
@@ -185,14 +185,6 @@ export default {
   mounted() {
     this.toggleCurrenciesDropdown();
     this.toggleSubDistrictsDropdown();
-  },
-  filters: {
-    selectedCurrenciesOptions(currencies, lang) {
-      return _.chain(currencies)
-        .map(obj => (lang === 'en-US') ? obj.value : obj.text)
-        .join((lang === 'en-US') ? ', ' : '、')
-        .value();
-    }
   },
   watch: {
     currentLanguage(newLang, oldLang) {

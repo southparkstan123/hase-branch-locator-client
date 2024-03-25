@@ -26,7 +26,7 @@
             {{ this.$i18n.t('branchLocator.typeModal.12notes') }}
           </template>
           <template slot="text" slot-scope="data">
-            {{ data.item | customLabel }}
+            {{ `${data.item.text} - ${data.item.value}` }}
           </template>
           <template slot="8notes" slot-scope="data">
             <font-awesome-icon v-if="data.value === 'true'" icon="check" />
@@ -75,11 +75,6 @@ export default {
     toPrinter() {
       window.print();
     }
-  },
-  filters: {
-    customLabel(obj) {
-      return `${obj.text} - ${obj.value}`;
-    },
   }
 }
 </script>
