@@ -1,6 +1,5 @@
 <template>
     <div>
-        
         <div v-if="items && items.length > 0 && isLoading === false">
             <article class="my-3">
                 <p v-html="message.message"></p>
