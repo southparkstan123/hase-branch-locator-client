@@ -5,9 +5,13 @@
         <p v-html="message.message"></p>
       </article>
       <b-container>
-        <b-list-group class="w-100 mx-auto">
-          <location-item v-bind:key="index" v-for="(item, index) in items" :item="item" />
-        </b-list-group>
+        <carousel :responsive="{
+          0: { items: 1, nav: false, dots: true },
+          768: { items: 2, nav: false, dots: true },
+          992: { items: 3, nav: false, dots: true }
+        }">
+          <location-item v-max-height ref="locationItems" v-bind:key="index" v-for="(item, index) in items" :item="item" />
+        </carousel>
       </b-container>
       <div class="fixed-bottom m-3">
         <div class="float-right">
@@ -15,7 +19,6 @@
         </div>
       </div>
     </div>
-
     <div class="text-center" v-else-if="isLoading === true">
       <b-spinner class="m-5" variant="success" label="Spinning"></b-spinner>
     </div>
@@ -25,14 +28,16 @@
 <script>
 import _ from 'lodash'
 import { mapGetters } from 'vuex'
-import NewLocationItem from './NewLocationItem'
+import Carousel from 'vue-owl-carousel';
+import LocationItem from './LocationItem';
 import { setTimeout } from 'timers';
 import left from "../assets/Arrow-Left-icon.png";
 import right from "../assets/Arrow-Right-icon.png";
 
 export default {
   components: {
-    'location-item': NewLocationItem,
+    'location-item': LocationItem,
+    'carousel': Carousel
   },
   data() {
     return {
@@ -52,32 +57,30 @@ export default {
     resetItems() {
       this.$store.dispatch('branchLocation/resetItems', { root: true });
     },
-    getMaxHeightInItems() {
-      setTimeout(() => {
-        this.$nextTick(() => {
-          if (document.getElementsByClassName('location-content')) {
-            let maxHeight = 0;
+  },
+  directives: {
+    maxHeight: {
+      bind: function (el) {
+        let maxHeight = el.clientHeight;
 
-            _.forEach(document.getElementsByClassName('location-content'), (element) => {
+        setTimeout(() => {
+          const body = document.getElementsByClassName('location-content');
+
+          if (body) {
+            _.forEach(body, (element) => {
               element.style.minHeight = `fit-content`;
               if (element.clientHeight > maxHeight) {
                 maxHeight = element.clientHeight
               }
             });
 
-            _.forEach(document.getElementsByClassName('location-content'), (element) => {
+            _.forEach(body, (element) => {
               element.style.minHeight = `fit-content`;
               element.style.minHeight = `${maxHeight}px`;
             });
           }
-        });
-      }, 1000)
-    }
-  },
-  updated() {
-    this.getMaxHeightInItems()
-    window.onresize = () => {
-      this.getMaxHeightInItems()
+        }, 0)
+      }
     }
   }
 }
@@ -85,7 +88,7 @@ export default {
 
 <style>
 .arrow {
-  width: 100px;
-  height: 20vh;
+    width: 100px;
+    height: 20vh;
 }
 </style>

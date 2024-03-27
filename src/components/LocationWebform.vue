@@ -16,7 +16,7 @@
         <multiselect v-model="form.serviceType" track-by="value" label="text"
           :options="JSON.parse(this.$i18n.t('branchLocator.webform.serviceTypesOptions'))" :searchable="false"
           :placeholder="this.$i18n.t('branchLocator.webform.pleaseSelect')" :allow-empty="false"
-          @input="toggleCurrenciesDropdown" selectLabel="" deselect-label=""></multiselect>
+          @input="toggleCurrenciesDropdown" selectLabel="" deselect-label="" :disabled="isLoading === true"></multiselect>
       </b-form-group>
       <b-form-group v-if="showCurrenciesDropdown">
         <label class="mr-sm-2" for="inline-form-custom-select-pref">{{ $t("branchLocator.webform.currencies") }}</label>
@@ -27,7 +27,7 @@
           :close-on-select="false" :clear-on-select="false" :preserve-search="true" :custom-label="customLabel"
           group-values="selections" group-label="group" :group-select="true" :taggable="false" :showNoResults="true"
           :selectedLabel="this.$i18n.t('branchLocator.forexMultiSelect.currenciesSelected')" selectGroupLabel=""
-          selectLabel="" deselectLabel="" deselectGroupLabel="">
+          selectLabel="" deselectLabel="" deselectGroupLabel="" :disabled="isLoading === true">
           <template slot="selection" slot-scope="{ values, search, option, isOpen }">
             <span class="multiselect__single" v-if="values.length >= 3 && values.length < 13 &amp;&amp; !isOpen">{{
         $t("branchLocator.forexMultiSelect.currenciesCustom") }}</span>
@@ -45,19 +45,25 @@
         <multiselect v-model="form.areas" track-by="value" label="text"
           :options="JSON.parse(this.$i18n.t('branchLocator.webform.areasOptions'))" :searchable="false"
           :allow-empty="false" @input="toggleSubDistrictsDropdown"
-          :placeholder="this.$i18n.t('branchLocator.webform.pleaseSelect')" selectLabel="" deselect-label="">
+          :placeholder="this.$i18n.t('branchLocator.webform.pleaseSelect')" selectLabel="" deselect-label="" :disabled="isLoading === true">
         </multiselect>
       </b-form-group>
       <b-form-group v-if="showSubDistrictsDropdown">
         <label class="mr-sm-2" for="inline-form-custom-select-pref">{{ $t("branchLocator.webform.districts") }}</label>
         <multiselect v-model="form.districts" track-by="value" label="text" :options="selectedDistricts"
           :searchable="false" :allow-empty="false" :placeholder="this.$i18n.t('branchLocator.webform.pleaseSelect')"
-          selectLabel="" deselect-label=""></multiselect>
+          selectLabel="" deselect-label="" :disabled="isLoading === true"></multiselect>
       </b-form-group>
-      <b-button class="mx-1" variant="secondary" :disabled="isLoading" type="button" @click="onReset">{{
-        this.$i18n.t('branchLocator.webform.cancel') }}</b-button>
-      <b-button class="mx-1" variant="success" :disabled="isLoading" type="submit">{{
-        this.$i18n.t('branchLocator.webform.submit') }}</b-button>
+
+      <div class="text-center" v-if="isLoading === true">
+        <b-spinner class="m-5" variant="success" label="Spinning"></b-spinner>
+      </div>
+      <div v-else>
+        <b-button class="mx-1" variant="secondary" type="button" @click="onReset">{{
+          this.$i18n.t('branchLocator.webform.cancel') }}</b-button>
+        <b-button class="mx-1" variant="success" type="submit">{{
+          this.$i18n.t('branchLocator.webform.submit') }}</b-button>
+      </div>
     </b-form>
   </div>
 </template>

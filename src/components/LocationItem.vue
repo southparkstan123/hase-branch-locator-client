@@ -1,7 +1,16 @@
 <template>
-  <b-card no-body tag="article" style="max-width: 20rem;height: 100%" class="card mb-2 ml-1 mr-1 mt-2">
-
-    <b-img class="map" @click="toGoogleMapPage" :src="staticMapLink"></b-img>
+  <b-card no-body tag="article" style="height: 100%" class="card mb-2 ml-1 mr-1 mt-2">
+    <l-map v-if="showMap" style="height: 240px;align-items: center;" :zoom="17" :center="location" :options="{zoomControl: false, dragging: false}">
+      <l-tile-layer :url="'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'"
+        :attribution="attribution"></l-tile-layer>
+      <l-marker :lat-lng="location">
+        <l-popup>
+          <div>
+            {{ item.siteName }}
+          </div>
+        </l-popup>
+      </l-marker>
+    </l-map>
     <b-card-body class="location-content">
       <b-card-title title-tag="h5">{{ item.siteName }}</b-card-title>
       <b-card-text v-html="toHtml(item.siteAddress)"></b-card-text>
@@ -17,13 +26,12 @@
 
 <script>
 import { generateHtmlForContent } from "../helpers/HTMLHelper"
-import { generateStaticMapLink } from "../helpers/GoogleMapHelper"
-import { googleMapAPIEndpoint, googleMapAPIKey } from '../config';
-
 export default {
   data() {
     return {
-      staticMapLink: ''
+      staticMapLink: '',
+      attribution: '&copy; <a target="_blank" href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+      showMap: false
     }
   },
   props: ["item", "heightOfCarousel"],
@@ -43,13 +51,15 @@ export default {
         siteFXATMServices: this.item.siteFXATMServices
       }
       this.$store.dispatch('serviceDetailsModal/open', payload, { root: true })
-    },
-    toGoogleMapPage() {
-      window.open('https://www.google.com/maps/search/?api=1&query=' + this.item.lat + ',' + this.item.lng, '_blank')
     }
   },
   mounted() {
-    this.staticMapLink = generateStaticMapLink(this.item.lat, this.item.lng, googleMapAPIEndpoint, googleMapAPIKey)
+    this.showMap = true;
+  },
+  computed: {
+    location: function () {
+      return [this.item.lat, this.item.lng]
+    }
   }
 }
 </script>
