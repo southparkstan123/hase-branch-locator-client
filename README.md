@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This is an SPA part using Vue2 for searching the location and information of the branches and the ATMs of Heng Seng Bank in Hong Kong.
+This is an SPA part using Vue2 for searching the information of the branches and ATMs of Heng Seng Bank in Hong Kong.
 
 The repository of backend (API) is [here](https://github.com/southparkstan123/hase-branch-locator-api).
 
@@ -10,42 +10,19 @@ The repository of backend (API) is [here](https://github.com/southparkstan123/ha
 
 ### Javascript Framework
 
-**Vue 2.6.10** and **Node 16** used on this repo
+**Vue 2.6.10** and **Node 16** used on this repository.
 
 ### CSS Framework
 
-**Bootstrap 4.3.1** is used on this repo
+**Bootstrap 4.3.1** is used on this repository.
 
 ### Others
 
-**BootstrapVue 2.0.0** and **Vuex 3.1.1** are used on this repo
+**BootstrapVue 2.0.0** and **Vuex 3.1.1** are used on this repository.
 
 ## Project setup
-```
-yarn install
-```
 
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
-
-### Compiles and minifies for production
-```
-yarn run build
-```
-
-### Run your tests
-```
-yarn run test
-```
-
-### Lints and fixes files
-```
-yarn run lint
-```
-
-## (New) Build the Docker Container
+### Environment setting
 
 1. Clone the git repo as following command:
 
@@ -57,7 +34,9 @@ git clone https://github.com/southparkstan123/hase-branch-locator-client.git
 
 For example, in development environment, rename the copied file as ```.env.development.local```, then input the key and value on it.
 
-3. Run the following command to build the image on your local machine and start the container:
+### Build the Docker Container
+
+Run the following command to build the image on your local machine and start the container:
 
 ```bash
 docker-compose up --build --no-recreate -d
