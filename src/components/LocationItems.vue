@@ -12,12 +12,10 @@
         }">
           <location-item v-max-height ref="locationItems" v-bind:key="index" v-for="(item, index) in items" :item="item" />
         </carousel>
-      </b-container>
-      <div class="fixed-bottom m-3">
-        <div class="float-right">
+        <div class="m-3">
           <b-button pill variant="success" @click="resetItems">{{ $t("branchLocator.confirmSubmit.modify") }}</b-button>
         </div>
-      </div>
+      </b-container>
     </div>
     <div class="text-center" v-else-if="isLoading === true">
       <b-spinner class="m-5" variant="success" label="Spinning"></b-spinner>
