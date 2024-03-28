@@ -50,6 +50,13 @@ export const outputMessageForResult = (messageObj) => {
   }
 }
 
+export const unauthorizedAPI = () => {
+  return {
+    type: "error",
+    message: i18n.t('branchLocator.webform.unauthorizedAPI')
+  }
+}
+
 export const displayAvailableCurrencies = (currencies) => {
   const allCurrencies = JSON.parse(i18n.t('branchLocator.webform.currenciesOptions'))
   let availableCurrencies = [];

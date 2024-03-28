@@ -1,5 +1,5 @@
 import BranchLocationServices from '../../services/BranchLocationServices';
-import { outputMessageForResult, displayAvailableCurrencies } from "../../helpers/MessageHelper"
+import { outputMessageForResult, displayAvailableCurrencies, unauthorizedAPI } from "../../helpers/MessageHelper"
 
 const state = {
   locationItems: [],
@@ -27,9 +27,12 @@ const actions = {
         }));
         commit('locationItemsLoaded');
       },1000)
-            
+
     } catch (error) {
-      commit('message/setMessage', error, {root: true});
+      commit('message/setMessage', unauthorizedAPI(), {root: true});
+      setTimeout(() => {
+        commit('locationItemsLoaded');
+      }, 100);
     }
   },
   resetItems({ commit }) {
