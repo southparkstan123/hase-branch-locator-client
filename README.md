@@ -1,5 +1,7 @@
 # HASE Branch Locator Client
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c5d02cbd-12eb-4b39-a2d1-24cafcdf5ce5/deploy-status)](https://app.netlify.com/sites/hase-branch-locator/deploys)
+
 ## Introduction
 
 This is an SPA part using Vue2 for searching the location and information of the branches and the ATMs of Heng Seng Bank in Hong Kong.
