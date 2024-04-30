@@ -34,7 +34,8 @@ export default {
       "serviceTypesOptions": "[{\"text\":\"分行\",\"value\":\"Branches\"},{\"text\":\"外币及人民币自动柜员机\",\"value\":\"FOREX\"}]",
       "currencies": "货币：",
       "currenciesOptions": "[{\"text\":\"澳元\",\"value\":\"AUD\",\"8notes\":\"true\",\"12notes\":\"true\"},{\"text\":\"加元\",\"value\":\"CAD\",\"8notes\":\"true\",\"12notes\":\"true\"},{\"text\":\"瑞士法郎\",\"value\":\"CHF\",\"8notes\":\"false\",\"12notes\":\"true\"},{\"text\":\"欧罗 \",\"value\":\"EUR\",\"8notes\":\"true\",\"12notes\":\"true\"},{\"text\":\"英镑\",\"value\":\"GBP\",\"8notes\":\"true\",\"12notes\":\"true\"},{\"text\":\"日圆\",\"value\":\"JPY\",\"8notes\":\"true\",\"12notes\":\"true\"},{\"text\":\"韩元\",\"value\":\"KRW\",\"8notes\":\"false\",\"12notes\":\"true\"},{\"text\":\"新西兰元\",\"value\":\"NZD\",\"8notes\":\"false\",\"12notes\":\"true\"},{\"text\":\"人民币\",\"value\":\"RMB\",\"8notes\":\"true\",\"12notes\":\"true\"},{\"text\":\"新加坡元\",\"value\":\"SGD\",\"8notes\":\"false\",\"12notes\":\"true\"},{\"text\":\"泰铢\",\"value\":\"THB\",\"8notes\":\"true\",\"12notes\":\"true\"},{\"text\":\"新台币\",\"value\":\"TWD\",\"8notes\":\"true\",\"12notes\":\"true\"},{\"text\":\"美元\",\"value\":\"USD\",\"8notes\":\"true\",\"12notes\":\"true\"}]",
-      "unauthorizedAPI": "无效的API密钥"
+      "unauthorizedAPI": "无效的API密钥",
+      "exchangeRate": "查询汇率"
     },
     "confirmSubmit": {
       "branchOutput": "以下为恒生分行及自助理财中心地址于<b style='color:#33A343;'>{districts}区</b>的位置： ",
@@ -81,6 +82,13 @@ export default {
       "8notes": "8种外币",
       "12notes": "12种外币",
       "print": "列印"
+    },
+    "exchangeRateModal": {
+      "header": "汇率",
+      "currencies": "货币",
+      "lastUpdateTime": "最后更新时间：",
+      "buyRate": "买入价",
+      "sellRate": "卖出价"
     }
   }
 }

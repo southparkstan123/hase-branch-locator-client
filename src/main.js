@@ -4,7 +4,7 @@ import Multiselect from 'vue-multiselect'
 import VueI18n from 'vue-i18n'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCheck, faTimes, faInfoCircle, faLightbulb, faPrint } from '@fortawesome/free-solid-svg-icons'
+import { faCheck, faTimes, faInfoCircle, faLightbulb, faPrint, faFunnelDollar } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 import 'bootstrap/dist/css/bootstrap.css'
@@ -21,7 +21,7 @@ import messageEN from './locales/en-US/messages'
 import messageTC from './locales/zh-HK/messages'
 import messageSC from './locales/zh-CN/messages'
 
-library.add(faCheck, faTimes, faInfoCircle, faLightbulb, faPrint)
+library.add(faCheck, faTimes, faInfoCircle, faLightbulb, faPrint, faFunnelDollar)
 
 Vue.component('l-map', LMap);
 Vue.component('l-tile-layer', LTileLayer);

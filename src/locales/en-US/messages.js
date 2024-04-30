@@ -34,7 +34,8 @@ export default {
       "serviceTypesOptions": "[{\"text\":\"Branch\",\"value\":\"Branches\"},{\"text\":\"ATM with Foreign Currency & RMB\",\"value\":\"FOREX\"}]",
       "currencies": "Currencies: ",
       "currenciesOptions": "[{\"text\":\"Australian Dollar\",\"value\":\"AUD\",\"8notes\":\"true\",\"12notes\":\"true\"},{\"text\":\"Canadian Dollar\",\"value\":\"CAD\",\"8notes\":\"true\",\"12notes\":\"true\"},{\"text\":\"Swiss Franc\",\"value\":\"CHF\",\"8notes\":\"false\",\"12notes\":\"true\"},{\"text\":\"Euro\",\"value\":\"EUR\",\"8notes\":\"true\",\"12notes\":\"true\"},{\"text\":\"Pound Sterling\",\"value\":\"GBP\",\"8notes\":\"true\",\"12notes\":\"true\"},{\"text\":\"Japanese Yen\",\"value\":\"JPY\",\"8notes\":\"true\",\"12notes\":\"true\"},{\"text\":\"Korean Won\",\"value\":\"KRW\",\"8notes\":\"false\",\"12notes\":\"true\"},{\"text\":\"New Zealand Dollar\",\"value\":\"NZD\",\"8notes\":\"false\",\"12notes\":\"true\"},{\"text\":\"Renminbi\",\"value\":\"RMB\",\"8notes\":\"true\",\"12notes\":\"true\"},{\"text\":\"Singapore Dollar\",\"value\":\"SGD\",\"8notes\":\"false\",\"12notes\":\"true\"},{\"text\":\"Thai Baht\",\"value\":\"THB\",\"8notes\":\"true\",\"12notes\":\"true\"},{\"text\":\"New Taiwan Dollar\",\"value\":\"TWD\",\"8notes\":\"true\",\"12notes\":\"true\"},{\"text\":\"United State Dollar\",\"value\":\"USD\",\"8notes\":\"true\",\"12notes\":\"true\"}]",
-      "unauthorizedAPI": "Invalid API key"
+      "unauthorizedAPI": "Invalid API key",
+      "exchangeRate": "Check the exchange Rate"
     },
     "confirmSubmit": {
       "branchOutput": "Below is the list of Hang Seng Branch and Automated Banking Centre location(s) in <b style='color:#33A343;'>{districts} district</b>: ",
@@ -81,6 +82,13 @@ export default {
       "8notes": "8 Currencies Notes",
       "12notes": "12 Currencies Notes",
       "print": "Print"
+    },
+    "exchangeRateModal": {
+      "header": "Exchange Rate",
+      "currencies": "Currencies",
+      "lastUpdateTime": "Last updated at:",
+      "buyRate": "Buy Rate",
+      "sellRate": "Sell Rate"
     }
   }
 }

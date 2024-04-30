@@ -8,6 +8,12 @@
       }">
         <font-awesome-icon class="info" icon="info-circle" @click="openATMTypeModal" />
       </b-button>
+      <b-button variant="link" class="p-0" size="lg" v-b-tooltip.hover="{
+        title: $t('branchLocator.webform.exchangeRate'),
+        placement: 'right'
+      }">
+        <font-awesome-icon class="currency" icon="funnel-dollar" @click="openExchangeRateModal"/>
+      </b-button>
     </h4>
     <b-form @submit="onSubmit">
       <b-form-group>
@@ -174,6 +180,9 @@ export default {
     },
     openATMTypeModal() {
       this.$store.dispatch('ATMTypeModal/open', JSON.parse(this.$i18n.t('branchLocator.webform.currenciesOptions')), { root: true })
+    },
+    openExchangeRateModal() {
+      this.$store.dispatch('exchangeRateModal/open', { root: true })
     }
   },
   computed: {
@@ -209,5 +218,9 @@ span.error {
 
 .info {
   color: #33A343;
+}
+
+.currency {
+  color: #545b62;
 }
 </style>

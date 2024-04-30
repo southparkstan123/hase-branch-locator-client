@@ -5,6 +5,7 @@ import siteConfig from './modules/siteConfig'
 import message from './modules/message'
 import serviceDetailsModal from './modules/serviceDetailsModal'
 import ATMTypeModal from './modules/ATMTypeModal'
+import exchangeRateModal from './modules/exchangeRateModal'
 
 Vue.use(Vuex)
 
@@ -14,6 +15,7 @@ export default new Vuex.Store({
     serviceDetailsModal,
     branchLocation,
     siteConfig,
-    ATMTypeModal
+    ATMTypeModal,
+    exchangeRateModal
   }
 })
