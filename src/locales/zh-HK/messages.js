@@ -88,7 +88,8 @@ export default {
       "currencies": "貨幣",
       "lastUpdateTime": "最後更新時間：",
       "buyRate": "買入價",
-      "sellRate": "賣出價"
+      "sellRate": "賣出價",
+      "refresh": "更新匯率"
     }
   }
 }

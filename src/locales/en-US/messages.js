@@ -88,7 +88,8 @@ export default {
       "currencies": "Currencies",
       "lastUpdateTime": "Last updated at:",
       "buyRate": "Buy Rate",
-      "sellRate": "Sell Rate"
+      "sellRate": "Sell Rate",
+      "refresh": "Refresh"
     }
   }
 }

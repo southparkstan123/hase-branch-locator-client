@@ -7,6 +7,9 @@
     </template>
     <template slot="default">
       <div class="d-block float-left">
+        <b-button variant="link" size="sm" @click="fetchData">
+          {{ this.$i18n.t('branchLocator.exchangeRateModal.refresh') }}
+        </b-button>
         <b-table fixed small :items="exchangeRates" :fields="fields">
           <template slot="HEAD_currencies">
             {{ this.$i18n.t('branchLocator.exchangeRateModal.currencies') }}
@@ -34,7 +37,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import ExchangeRateService from '../services/ExchangeRateServices';
 import { mapGetters } from 'vuex';
 
 export default {
@@ -65,18 +68,11 @@ export default {
   },
   methods: {
     async fetchData() {
-      const cors = 'https://cors-anywhere.herokuapp.com/';
-      const url = 'https://rbwm-api.hsbc.com.hk/pws-hk-hase-rates-papi-prod-proxy/v1/fxtt-exchange-rates?_=1711616335';
       try {
-        const result = await axios.get(`${cors}${url}`, {
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-          }
-        });
-        this.exchangeRates = result.data.fxttExchangeRates;
-        this.lastUpdateTime = result.data.lastUpdateTime;
+        const result = await ExchangeRateService.getExchangeRate();
+        this.exchangeRates = result.fxttExchangeRates;
+        this.lastUpdateTime = result.lastUpdateTime;
       } catch (error) {
-        window.console.log(error);
         this.$store.dispatch('message/setMessage', { type: 'error', message: error.join("<br>") }, { root: true });
       }
     },
