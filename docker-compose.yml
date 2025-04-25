@@ -3,7 +3,7 @@ services:
  client:
    image: node:16-alpine
    container_name: client
-   entrypoint: /bin/sh
+   entrypoint: ./docker-node.sh
    ports:
      - 8080:8080
    working_dir: /hase-branch-locator-client

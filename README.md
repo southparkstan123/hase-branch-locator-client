@@ -71,6 +71,12 @@ If the image on your local machine was built, run the following command to start
 docker-compose up -d
 ```
 
+**Troubleshooting**
+
+1. Permission Denied "exec docker-node.sh"
+
+```chmod +x docker-node.sh ```
+
 ### Build and start the Application
 
 1. Access to the container and then execute the commands
