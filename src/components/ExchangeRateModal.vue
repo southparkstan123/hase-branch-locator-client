@@ -21,7 +21,8 @@
             {{ this.$i18n.t('branchLocator.exchangeRateModal.sellRate') }}
           </template>
           <template slot="currencies" slot-scope="data">
-             {{ data.item.ccyDisplayCode }}
+            {{ data.item[`ccyName${code}`] }} {{ data.item.ccyDisplayCode }}
+            <span :style="'display: block;font-style: italic;'">{{ data.item.ccyBaseRemark }}</span> 
           </template>
           <template slot="buyRate" slot-scope="data">
             {{ data.item.ttBuyRate }}
@@ -44,7 +45,18 @@ export default {
   computed: {
     ...mapGetters({
       show: "exchangeRateModal/isShowModal",
-    })
+      currentLanguage: 'siteConfig/getCurrentLanguage',
+    }),
+    code() {
+      switch (this.currentLanguage.value) {
+        case 'zh-HK':
+          return 'Zh';
+        case 'zh-CN':
+          return 'Cn';
+        default:
+          return 'En';
+      }
+    }
   },
   data() {
     return {
